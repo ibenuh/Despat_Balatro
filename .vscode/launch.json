@@ -13,7 +13,7 @@
       "externalConsole": false,
       "console": "integratedTerminal",
       "MIMode": "gdb",
-      "miDebuggerPath": "C:\\TDM-GCC-64\\bin\\gdb.exe",
+      "miDebuggerPath": "C:/msys64/usr/bin/gdb.exe",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
@@ -26,7 +26,7 @@
           "ignoreFailures": true
         }
       ],
-      "preLaunchTask": "TDM-GCC: build Despat Balatro"
+      "preLaunchTask": "MSYS2 g++: build Despat Balatro"
     },
     {
       "name": "C/C++ Runner: Debug Session",

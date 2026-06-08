@@ -1,29 +1,30 @@
 #pragma once
-
-#include "BlindState.h"
-#include "Deck.h"
-#include "HandState.h"
-#include "RewardCommand.h"
-
-#include <memory>
 #include <vector>
+#include <string>
+#include <memory>
 
-struct RunPersistentState {
+// Forward declaration
+class RewardCommand;
+
+struct PersistentState {
     int ante = 1;
-    int money = 0;
-    std::vector<std::unique_ptr<RewardCommand>> pendingCommands;
-    std::unique_ptr<BlindState> currentBlind;
+    int money = 4;
+    int remainingHands = 4;
+    int remainingDiscards = 3;
+    std::vector<std::string> deck;
+    std::vector<std::string> pendingDeckReward;
+    std::vector<std::shared_ptr<RewardCommand>> pendingCommands;
 };
 
-struct BlindRuntimeState {
-    int blindScore = 0;
-    int remainingPlays = 3;
-    int remainingDiscards = 3;
-    Deck deck;
-    HandState handState;
+struct BlindState {
+    std::string name;
+    bool isSkipped = false;
+    bool isDefeated = false;
 };
 
 struct RunSessionState {
-    RunPersistentState persistent;
-    BlindRuntimeState runtime;
+    PersistentState persistent;
+    BlindState currentBlind;
+    bool isRunActive = true;
+    int currentBlindIndex = 0; // 0=Small, 1=Big, 2=Boss
 };
